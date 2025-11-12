@@ -10,11 +10,15 @@ export interface CardData {
 
 interface CardProps {
     card: CardData;
+    onClick?: () => void;
 }
 
-const Card: React.FC<CardProps> = ({ card }) => {
+const Card: React.FC<CardProps> = ({ card, onClick }) => {
     return (
-        <div className="card">
+        <div
+            className={`card ${onClick ? 'clickable' : ''}`}
+            onClick={onClick}
+        >
             {card.imageUrl && (
                 <div className="card-image">
                     <img src={card.imageUrl} alt={card.title} />

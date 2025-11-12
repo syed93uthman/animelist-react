@@ -6,9 +6,10 @@ import './CardList.css';
 interface CardListProps {
     cards: CardData[];
     cardsPerPage?: number;
+    onCardClick?: (animeId: number) => void;
 }
 
-const CardList: React.FC<CardListProps> = ({ cards, cardsPerPage = 25 }) => {
+const CardList: React.FC<CardListProps> = ({ cards, cardsPerPage = 25, onCardClick }) => {
     const [currentPage, setCurrentPage] = useState(1);
 
     const totalPages = Math.ceil(cards.length / cardsPerPage);
@@ -37,7 +38,11 @@ const CardList: React.FC<CardListProps> = ({ cards, cardsPerPage = 25 }) => {
 
             <div className="card-grid">
                 {currentCards.map((card) => (
-                    <Card key={card.id} card={card} />
+                    <Card
+                        key={card.id}
+                        card={card}
+                        onClick={onCardClick ? () => onCardClick(card.id) : undefined}
+                    />
                 ))}
             </div>
 

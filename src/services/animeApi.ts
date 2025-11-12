@@ -97,3 +97,79 @@ export const getFallbackAnimeData = (): CardData[] => [
     imageUrl: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop"
   }
 ];
+
+// Interface for detailed anime information
+export interface AnimeDetails {
+  mal_id: number;
+  title: string;
+  title_english?: string;
+  title_japanese?: string;
+  synopsis?: string;
+  score?: number;
+  scored_by?: number;
+  rank?: number;
+  popularity?: number;
+  episodes?: number;
+  duration?: string;
+  rating?: string;
+  status?: string;
+  year?: number;
+  season?: string;
+  source?: string;
+  genres?: Array<{
+    mal_id: number;
+    name: string;
+  }>;
+  studios?: Array<{
+    mal_id: number;
+    name: string;
+  }>;
+  producers?: Array<{
+    mal_id: number;
+    name: string;
+  }>;
+  images: {
+    jpg?: {
+      image_url?: string;
+      large_image_url?: string;
+    };
+    webp?: {
+      image_url?: string;
+      large_image_url?: string;
+    };
+  };
+  trailer?: {
+    youtube_id?: string;
+    url?: string;
+  };
+  background?: string;
+  broadcast?: {
+    day?: string;
+    time?: string;
+    timezone?: string;
+    string?: string;
+  };
+}
+
+// Fetch anime details by MAL ID
+export const fetchAnimeDetails = async (mal_id: number): Promise<AnimeDetails> => {
+  try {
+    const response = await fetch(`https://api.jikan.moe/v4/anime/${mal_id}`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch anime details. Status: ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.data) {
+      throw new Error('No anime data found');
+    }
+    
+    return data.data;
+    
+  } catch (error) {
+    console.error(`Error fetching anime details for ID ${mal_id}:`, error);
+    throw error;
+  }
+};
