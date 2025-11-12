@@ -4,16 +4,81 @@ import { CardData } from '../components/Card';
 export const generateAnimeCards = (count: number): CardData[] => {
   const cards: CardData[] = [];
 
-  let animeTitles = [];
-  let descriptions = [];
-  let imageUrls = [];
+  // Fallback data for anime-themed cards
+  const animeTitles = [
+    "Attack on Titan",
+    "Demon Slayer",
+    "My Hero Academia",
+    "One Piece",
+    "Naruto",
+    "Dragon Ball Z",
+    "Death Note",
+    "Fullmetal Alchemist",
+    "One Punch Man",
+    "Jujutsu Kaisen",
+    "Tokyo Revengers",
+    "Chainsaw Man",
+    "Spy x Family",
+    "Mob Psycho 100",
+    "Hunter x Hunter",
+    "Bleach",
+    "JoJo's Bizarre Adventure",
+    "Cowboy Bebop",
+    "Evangelion",
+    "Studio Ghibli Collection",
+    "Violet Evergarden",
+    "Your Name",
+    "Spirited Away",
+    "Princess Mononoke",
+    "Akira"
+  ];
+
+  const descriptions = [
+    "Epic adventure in a world of giants",
+    "Breathtaking animation and storytelling",
+    "Heroes rising to meet their destiny",
+    "Classic anime with timeless appeal",
+    "Action-packed with incredible characters",
+    "Legendary series that defined anime",
+    "Mind-bending psychological thriller",
+    "Perfect blend of action and emotion",
+    "Comedy meets superhero action",
+    "Modern masterpiece of animation",
+    "Time travel meets gang warfare",
+    "Dark humor and intense action",
+    "Heartwarming family comedy",
+    "Supernatural powers and growth",
+    "Adventure and friendship at its best"
+  ];
+
+  const imageUrls = [
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1594736797933-d0401ba0ad81?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1493692092095-b0c6b3556077?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1619377834153-ad6c03bbe6ea?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1594736797933-d0401ba0ad81?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1493692092095-b0c6b3556077?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1619377834153-ad6c03bbe6ea?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1594736797933-d0401ba0ad81?w=400&h=300&fit=crop",
+    "https://images.unsplash.com/photo-1606041008023-472dfb5e530f?w=400&h=300&fit=crop"
+  ];
 
   for (let i = 1; i <= count; i++) {
+    const titleIndex = (i - 1) % animeTitles.length;
+    const descIndex = (i - 1) % descriptions.length;
+    const imageIndex = (i - 1) % imageUrls.length;
+    
     cards.push({
       id: i,
-      title: `Anime Title ${i}`,
-      description: `Description for Anime Title ${i}`,
-      imageUrl: `https://example.com/anime${i}.jpg`
+      title: animeTitles[titleIndex],
+      description: descriptions[descIndex],
+      imageUrl: imageUrls[imageIndex]
     });
   }
   return cards;
