@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/animelist-react/static/css/main.5447317f.css",
+    "main.js": "/animelist-react/static/js/main.8dcbbb51.js",
+    "static/js/453.117b0875.chunk.js": "/animelist-react/static/js/453.117b0875.chunk.js",
+    "index.html": "/animelist-react/index.html",
+    "main.5447317f.css.map": "/animelist-react/static/css/main.5447317f.css.map",
+    "main.8dcbbb51.js.map": "/animelist-react/static/js/main.8dcbbb51.js.map",
+    "453.117b0875.chunk.js.map": "/animelist-react/static/js/453.117b0875.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5447317f.css",
+    "static/js/main.8dcbbb51.js"
+  ]
+}
